@@ -1,20 +1,25 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
 <h1>Cat Details</h1>
 
 <div class="card">
-    <div class="card-content">
-      <span class="card-title">{{ finch.name }}</span>
-      <p>Species.: {{ finch.species }}</p>
-      <p>Color: {{ finch.color }}</p>
-      <p>Description: {{ finch.description|linebreaks }}</p>
-      {% if finch.age > 0 %}
-        <p>Age: {{ finch.age }}</p>
-      {% else %}
-        <p>Age: Little Bird</p>
-      {% endif %}
-    </div>
+  <div class="card-content">
+    <span class="card-title">{{ finch.name }}</span>
+    <p>Species.: {{ finch.species }}</p>
+    <p>Color: {{ finch.color }}</p>
+    <p>Description: {{ finch.description|linebreaks }}</p>
+    {% if finch.age > 0 %}
+    <p>Age: {{ finch.age }}</p>
+    {% else %}
+    <p>Age: Little Bird</p>
+    {% endif %}
   </div>
+  <!-- Add the following markup -->
+  <div class="card-action">
+    <a href="{% url 'finches_update' finch.id %}">Edit</a>
+    <a href="{% url 'finches_delete' finch.id %}">Delete</a>
+  </div>
+  <!-- New markup above -->
+</div>
 
 {% endblock %}

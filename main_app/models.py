@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Finch(models.Model):
@@ -11,3 +12,7 @@ class Finch(models.Model):
     # Changing instance method does not impact database, therefore no makemigrations is necessary 
     def __str__(self):
         return f'{self.name} ({self.id})'
+
+    # Add this method
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'finch_id': self.id})
